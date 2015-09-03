@@ -23,8 +23,9 @@ public class BiometricFace {
 
     //***************** static staff
     private static FaceDetector detector;
-    Face face;
     Map<Integer, PointF> landmarks = new HashMap<>();
+    double rightEyeAngel, leftEyeAngle, cheekAngle, cheekDist;
+    private Face face;
 
     private BiometricFace() {
     }
@@ -39,6 +40,33 @@ public class BiometricFace {
         this.face = face;
         for(Landmark mark:face.getLandmarks())
             landmarks.put(mark.getType(), mark.getPosition());
+
+        float angle = getEulerY();
+        if (Math.abs(angle) > 36)
+            return;
+
+        PointF rightEye = landmarks.get(Landmark.RIGHT_EYE);
+        PointF leftEye = landmarks.get(Landmark.LEFT_EYE);
+        PointF nose = landmarks.get(Landmark.NOSE_BASE);
+        float zAng = getEulerZ();
+        rightEyeAngel = Math.atan2(rightEye.y - nose.y, rightEye.x - nose.x) + zAng;
+        leftEyeAngle = Math.atan2(leftEye.y - nose.y, leftEye.x - nose.x) + zAng;
+//        if(Math.abs(angle) < 12) {
+//            PointF rightEye = landmarks.get(Landmark.RIGHT_EYE);
+//            PointF leftEye = landmarks.get(Landmark.LEFT_EYE);
+//            PointF rightCheek = landmarks.get(Landmark.RIGHT_CHEEK);
+//            PointF leftCheek = landmarks.get(Landmark.LEFT_CHEEK);
+//            PointF nose = landmarks.get(Landmark.NOSE_BASE);
+//            double rightEyeAngle = Math.atan2(rightEye.y-nose.y,rightEye.x-nose.x),
+//                    leftEyeAngle = Math.atan2(leftEye.y - nose.y, leftEye.x - nose.x),
+//                    ;
+//            eyesAngle = Math.atan2()
+//        }
+//                landmarks.containsKey(Landmark.LEFT_CHEEK) && landmarks.containsKey(Landmark.RIGHT_CHEEK)
+//                && landmarks.containsKey(Landmark.LEFT_EYE) && landmarks.containsKey(Landmark.RIGHT_EYE)
+//                && landmarks.containsKey(Landmark.NOSE_BASE)) {
+//
+//        }
     }
 
     /**
@@ -113,43 +141,43 @@ public class BiometricFace {
         return 1;
     }
 
-    private PointF getPosition() {
+    public PointF getPosition() {
         return face.getPosition();
     }
 
-    private List<Landmark> getLandmarks() {
+    public List<Landmark> getLandmarks() {
         return face.getLandmarks();
     }
 
-    private float getIsSmilingProbability() {
+    public float getIsSmilingProbability() {
         return face.getIsSmilingProbability();
     }
 
-    private float getIsRightEyeOpenProbability() {
+    public float getIsRightEyeOpenProbability() {
         return face.getIsRightEyeOpenProbability();
     }
 
-    private float getIsLeftEyeOpenProbability() {
+    public float getIsLeftEyeOpenProbability() {
         return face.getIsLeftEyeOpenProbability();
     }
 
-    private int getId() {
+    public int getId() {
         return face.getId();
     }
 
-    private float getHeight() {
+    public float getHeight() {
         return face.getHeight();
     }
 
-    private float getEulerZ() {
+    public float getEulerZ() {
         return face.getEulerZ();
     }
 
-    private float getEulerY() {
+    public float getEulerY() {
         return face.getEulerY();
     }
 
-    private float getWidth() {
+    public float getWidth() {
         return face.getWidth();
     }
 
