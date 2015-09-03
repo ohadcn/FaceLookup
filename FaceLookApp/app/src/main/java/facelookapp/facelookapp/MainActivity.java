@@ -2,9 +2,10 @@ package facelookapp.facelookapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import facelookapp.facedetectionlib.FaceDbCreatorThread;
 
 
 public class MainActivity extends Activity {
@@ -13,6 +14,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
+        dbCreator.start();
     }
 
 
