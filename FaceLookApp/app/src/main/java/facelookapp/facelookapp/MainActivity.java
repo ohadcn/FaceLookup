@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -51,18 +52,20 @@ public class MainActivity extends Activity {
         GridView gridview = (GridView) findViewById(R.id.galleryView);
         myImageAdapter = new ImageAdapter(this);
         gridview.setAdapter(myImageAdapter);
-//        String ExternalStorageDirectoryPath = Environment
-//                .getExternalStorageDirectory()
-//                .getAbsolutePath();
-//        String targetPath = ExternalStorageDirectoryPath + "/test/";
-//        String targetPath = ExternalStorageDirectoryPath;
-//        Toast.makeText(getApplicationContext(), targetPath, Toast.LENGTH_LONG).show();
-//        File targetDirector = new File(targetPath);
-        List<String> paths = ImageList.imagesOnDevice(this);
-//        File[] files = targetDirector.listFiles();
+        final List<String> paths = ImageList.imagesOnDevice(this);
         for (String path : paths){
             myImageAdapter.add(path);
         }
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String imagePath = paths.get(position);
+                Intent displayImageIntent = new Intent(MainActivity.this, DisplayImage.class);
+                displayImageIntent.putExtra("imagePath", imagePath);
+                startActivityForResult(displayImageIntent,RESULT_OK);
+            }
+        });
 
     }
 
@@ -73,6 +76,10 @@ public class MainActivity extends Activity {
         if (requestCode == CAM_REQUEST) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             displayImg.setImageBitmap(thumbnail);
+        }
+
+        if (requestCode == RESULT_OK) {
+
         }
     }
 
