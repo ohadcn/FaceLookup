@@ -4,36 +4,36 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--<LinearLayout-->
-    <!--android:id="@+id/menuTab"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
+<LinearLayout
+    android:id="@+id/menuTab"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
-    <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
-        <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/menu"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:src="@drawable/menu"/>&ndash;&gt;-->
-        <!--<Button-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:id="@+id/gallery"-->
-            <!--android:icon="@drawable/gallery"-->
-            <!--/>-->
-        <!--<Button-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:id="@+id/contacts"-->
-            <!--android:icon="@drawable/contacts"/>-->
-        <!--<Button-->
-            <!--android:layout_width="50dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:id="@+id/camera"-->
-            <!--android:icon="@drawable/camera"/>-->
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu"
+            android:src="@drawable/menu"/>
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/gallery"
+            android:src="@drawable/gallery"
+            />
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/contacts"
+            android:src="@drawable/contacts"/>
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/camera"
+            android:src="@drawable/camera"/>
 
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
     <!--<FrameLayout-->
         <!--android:id="@android:id/tabcontent"-->
