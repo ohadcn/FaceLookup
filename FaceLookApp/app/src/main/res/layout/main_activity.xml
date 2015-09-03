@@ -1,0 +1,53 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:id="@+id/menuTab"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu"
+            android:src="@drawable/menu"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/gallery"
+            android:icon="@drawable/gallery"
+            />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/contacts"
+            android:icon="@drawable/contacts"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/camera"
+            android:icon="@drawable/camera"/>
+
+    </LinearLayout>
+
+    <!--<FrameLayout-->
+        <!--android:id="@android:id/tabcontent"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0" />-->
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/realtabcontent"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1" />-->
+
+</LinearLayout>
+
+
+
