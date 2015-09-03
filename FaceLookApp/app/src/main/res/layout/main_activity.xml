@@ -16,22 +16,22 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu"
             android:src="@drawable/menu"/>
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/gallery"
-            android:icon="@drawable/gallery"
+            android:src="@drawable/gallery"
             />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/contacts"
-            android:icon="@drawable/contacts"/>
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:src="@drawable/contacts"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/camera"
-            android:icon="@drawable/camera"/>
+            android:src="@drawable/camera"/>
 
     </LinearLayout>
 
