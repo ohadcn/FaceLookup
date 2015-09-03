@@ -12,7 +12,9 @@ import com.google.android.gms.vision.face.FaceDetector;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ohad on 9/3/15.
@@ -22,6 +24,7 @@ public class BiometricFace {
     //***************** static staff
     private static FaceDetector detector;
     Face face;
+    Map<Integer, PointF> landmarks = new HashMap<>();
 
     private BiometricFace() {
     }
@@ -34,6 +37,8 @@ public class BiometricFace {
     public BiometricFace(Face face) {
         //TODO
         this.face = face;
+        for(Landmark mark:face.getLandmarks())
+            landmarks.put(mark.getType(), mark.getPosition());
     }
 
     /**
@@ -161,6 +166,12 @@ public class BiometricFace {
 
     @Override
     public String toString() {
+        String res = "";
+        for(int i=0; i<11;i++)
+            if(landmarks.containsKey(i))
+                res += landmarks.get(i) + " ";
+            else
+                res += "null ";
         return super.toString();
     }
 
