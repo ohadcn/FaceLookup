@@ -1,23 +1,47 @@
 package facelookapp.facelookapp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import facelookapp.facedetectionlib.FaceDbCreatorThread;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 
 public class MainActivity extends Activity {
+
+    ImageButton takeAPicBtn;
+    ImageView displayImg;
+
+    private static final int CAM_REQUEST = 1313;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
-        dbCreator.start();
+        //Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
+        //dbCreator.start();
+
+        takeAPicBtn = (ImageButton) findViewById(R.id.camera);
+        displayImg = (ImageView) findViewById(R.id.image_view);
+
+        takeAPicBtn.setOnClickListener(new takeAPicClicker());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CAM_REQUEST) {
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            displayImg.setImageBitmap(thumbnail);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,5 +63,13 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class takeAPicClicker implements Button.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, CAM_REQUEST);
+        }
     }
 }
