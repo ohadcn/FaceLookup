@@ -16,24 +16,44 @@
             android:layout_height="wrap_content"
             android:id="@+id/menu"
             android:src="@drawable/menu"/>
+            <!--android:src="@drawable/menu"-->
+
         <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/gallery"
-            android:src="@drawable/gallery"
-            />
+            android:src="@drawable/gallery"/>
+            <!--android:src="@drawable/gallery"-->
+
         <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/contacts"
             android:src="@drawable/contacts"/>
+            <!--android:src="@drawable/contacts"-->
+
         <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/camera"
             android:src="@drawable/camera"/>
+            <!--android:src="@drawable/camera"-->
+
 
     </LinearLayout>
+
+    <GridView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/galleryView"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center">
+
+        </GridView>
 
     <!--<FrameLayout-->
         <!--android:id="@android:id/tabcontent"-->
