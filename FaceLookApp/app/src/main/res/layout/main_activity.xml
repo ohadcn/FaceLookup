@@ -4,48 +4,68 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_centerHorizontal="true"
-        android:id="@+id/menuTab"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+<LinearLayout
+    android:id="@+id/menuTab"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
-        xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android">
         <ImageButton
-            android:layout_width="88dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/menu"
             android:src="@drawable/menu"/>
+            <!--android:src="@drawable/menu"-->
+
         <ImageButton
-            android:layout_width="88dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/gallery"
             android:src="@drawable/gallery"/>
+            <!--android:src="@drawable/gallery"-->
+
         <ImageButton
-            android:layout_width="88dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/contacts"
             android:src="@drawable/contacts"/>
+            <!--android:src="@drawable/contacts"-->
+
         <ImageButton
-            android:layout_width="88dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/camera"
             android:src="@drawable/camera"/>
+            <!--android:src="@drawable/camera"-->
+
 
     </LinearLayout>
 
-    <!--<FrameLayout-->
-    <!--android:id="@android:id/tabcontent"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="0" />-->
+    <GridView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/galleryView"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center">
+
+        </GridView>
 
     <!--<FrameLayout-->
-    <!--android:id="@+id/realtabcontent"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="1" />-->
+        <!--android:id="@android:id/tabcontent"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0" />-->
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/realtabcontent"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1" />-->
 
 </LinearLayout>
 
