@@ -6,13 +6,12 @@ import android.graphics.Bitmap;
  * Created by ohad on 9/3/15.
  */
 public class Face {
-    public Face() {
+    private Face() {
     }
 
     /**
      * gets you a @Face instance, from an bitmap image
      * see also @facesFromImage
-     *
      * @param bitmap a @bitmap image, of the face
      * @return @Face instance
      * @see @facesFromImage
@@ -45,4 +44,22 @@ public class Face {
         //TODO
         return 1;
     }
+
+    /**
+     * returns a face instance, described by a given string
+     *
+     * @param s a string, describing a face
+     * @return a face instance
+     */
+    public Face fromString(String s) {
+        //TODO
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }
+
