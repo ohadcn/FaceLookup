@@ -1,71 +1,75 @@
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-<LinearLayout
-    android:id="@+id/menuTab"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/menuTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
         <ImageButton
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
             android:id="@+id/menu"
-            android:src="@drawable/menu"/>
-            <!--android:src="@drawable/menu"-->
-
-        <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:src="@drawable/menu" />
+
+        <ImageButton
             android:id="@+id/gallery"
-            android:src="@drawable/gallery"/>
-            <!--android:src="@drawable/gallery"-->
-
-        <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:src="@drawable/gallery" />
+
+        <ImageButton
             android:id="@+id/contacts"
-            android:src="@drawable/contacts"/>
-            <!--android:src="@drawable/contacts"-->
-
-        <ImageButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:src="@drawable/contacts" />
+
+        <ImageButton
             android:id="@+id/camera"
-            android:src="@drawable/camera"/>
-            <!--android:src="@drawable/camera"-->
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera" />
+        <!--android:src="@drawable/camera"-->
 
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gallery"
+        android:layout_gravity="center_vertical"
+        android:scaleType="center" />
+
     <GridView
+        android:id="@+id/galleryView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/galleryView"
         android:columnWidth="90dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
+        android:gravity="center"
         android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:gravity="center">
+        android:verticalSpacing="10dp">
 
-        </GridView>
-
-    <!--<FrameLayout-->
-        <!--android:id="@android:id/tabcontent"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="0" />-->
+    </GridView>
 
     <!--<FrameLayout-->
-        <!--android:id="@+id/realtabcontent"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1" />-->
+    <!--android:id="@android:id/tabcontent"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="0" />-->
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/realtabcontent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1" />-->
 
 </LinearLayout>
 

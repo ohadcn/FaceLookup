@@ -1,34 +1,36 @@
 package facelookapp.facelookapp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import java.io.File;
+import android.widget.ImageView;
+
 import java.util.List;
 
-import android.widget.Toast;
-
+import facelookapp.facedetectionlib.FaceDbCreatorThread;
 import facelookapp.images.ImageList;
 
 
-//import facelookapp.facedetectionlib.FaceDbCreatorThread;
-
-
 public class MainActivity extends Activity {
+    private static final int CAM_REQUEST = 1313;
     ImageAdapter myImageAdapter;
+    ImageButton takeAPicBtn;
+    ImageView displayImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-//        Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
-//        dbCreator.start();
+
+        Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
+        dbCreator.start();
 
         ImageButton galleryButton = (ImageButton) findViewById(R.id.gallery);
         galleryButton.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,10 @@ public class MainActivity extends Activity {
                 loadGalleryGrid();
             }
         });
+        takeAPicBtn = (ImageButton) findViewById(R.id.camera);
+        displayImg = (ImageView) findViewById(R.id.image_view);
+
+        takeAPicBtn.setOnClickListener(new takeAPicClicker());
     }
 
     public void loadGalleryGrid() {
@@ -60,6 +66,15 @@ public class MainActivity extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CAM_REQUEST) {
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            displayImg.setImageBitmap(thumbnail);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,5 +96,13 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class takeAPicClicker implements Button.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, CAM_REQUEST);
+        }
     }
 }

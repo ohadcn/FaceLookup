@@ -66,13 +66,13 @@ public class BiometricFace {
      * @return @BiometricFace instance
      * @see @facesFromImage
      */
-    public static BiometricFace faceFromBitmap(Bitmap bitmap) {
-        Frame frame = new Frame.Builder().setBitmap(bitmap).build();
-        SparseArray<Face> faces = detector.detect(frame);
-        if (faces.size() == 0)
-            return null;
-        return new BiometricFace(faces.get(0));
-    }
+//    public static BiometricFace faceFromBitmap(Bitmap bitmap) {
+//        Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+//        SparseArray<Face> faces = detector.detect(frame);
+//        if (faces.size() == 0)
+//            return null;
+//        return new BiometricFace(faces.get(0));
+//    }
 
     /**
      * returns an array of faces in a given image.
