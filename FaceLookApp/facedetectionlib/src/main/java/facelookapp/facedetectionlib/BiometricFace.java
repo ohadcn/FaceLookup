@@ -96,6 +96,8 @@ public class BiometricFace {
                 .setTrackingEnabled(false)
                 .setLandmarkType(FaceDetector.ALL_LANDMARKS)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
+//                .setMode(FaceDetector.ACCURATE_MODE)
+                .setTrackingEnabled(false)
                 .build();
 
         if (!detector.isOperational())
