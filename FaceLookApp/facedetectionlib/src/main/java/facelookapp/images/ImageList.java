@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,18 @@ import java.util.List;
  */
 public class ImageList {
 
-    public static List<String> imagesOnDevice(Context context) {
 
+    public static List<String> imagesOnDevice(Context context) {
+        return imagesOnDevice(context, new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                return true;
+            }
+        });
+    }
+
+    public static List<String> imagesOnDevice(Context context, FileFilter filter) {
+        //TODO filter
         List<String> results = new ArrayList<>();
 
         String[] projections = {MediaStore.Images.Media._ID,
@@ -42,4 +54,5 @@ public class ImageList {
         }
         return results;
     }
+
 }
