@@ -1,10 +1,11 @@
 package facelookapp.facedetectionlib;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Looper;
-import android.widget.Toast;
-
-import com.google.android.gms.vision.face.FaceDetector;
 
 import java.util.List;
 
@@ -22,10 +23,19 @@ public class FaceDbCreatorThread implements Runnable {
     public void run() {
         Looper.prepare();
         BiometricFace.initDetector(context);
+        FacesStore.initDB(context);
+        SQLiteDatabase db = FacesStore.getWritableDB();
 
         List<String> ls = ImageList.imagesOnDevice(context);
         for(String s:ls) {
-
+            Bitmap image = BitmapFactory.decodeFile(s);
+            BiometricFace[] faces = BiometricFace.facesFromImage(image);
+            System.out.println(s + " " + faces.length);
+            for (BiometricFace face : faces) {
+                ContentValues vals = face.getValues();
+                vals.put(FacesStore.FILE_NAME, s);
+                FacesStore.insert(null, vals);
+            }
         }
     }
 

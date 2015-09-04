@@ -7,9 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import java.io.File;
-import java.io.FileFilter;
-
 /**
  * Created by ohad on 9/4/15.
  */
@@ -64,15 +61,15 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
         return read;
     }
 
-    public static FileFilter getFilter(final String s) {
+    public static Filter getFilter(final String s) {
         final BiometricFace face = BiometricFace.fromString(s);
-        return new FileFilter() {
+        return new Filter() {
 
 
             @Override
-            public boolean accept(File pathname) {
+            public boolean accept(String pathname) {
                 SQLiteDatabase data = getReadableDB();
-                String[] file = {pathname.getAbsolutePath()};
+                String[] file = {pathname};
                 Cursor cur = data.query(TABLE_NAME, null, FILE_NAME, file, null, null, null);
                 if (!cur.moveToFirst())
                     return false;
@@ -104,6 +101,10 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //no old version yet
+    }
+
+    public static interface Filter {
+        public boolean accept(String pathname);
     }
 
 }
