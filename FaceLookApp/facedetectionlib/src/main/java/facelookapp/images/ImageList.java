@@ -51,6 +51,7 @@ public class ImageList {
                     results.add(data);
             } while (cur.moveToNext());
         }
+        cur.close();
         return results;
     }
 

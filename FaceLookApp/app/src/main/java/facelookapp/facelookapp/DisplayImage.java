@@ -3,16 +3,13 @@ package facelookapp.facelookapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PointF;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -34,7 +31,7 @@ public class DisplayImage extends Activity {
 //            int height = image.getMaxHeight();
             Bitmap bm = ImageLoader.decodeSampledBitmapFromUri(path, 1000, 1000);
             image.setImageBitmap(bm);
-            BiometricFace[] faces = BiometricFace.facesFromImage(bm, DisplayImage.this);
+            BiometricFace[] faces = BiometricFace.facesFromImage(bm);
             FrameLayout frame = (FrameLayout) findViewById(R.id.my_frame);
             if (faces.length >0) {
                 for (final BiometricFace bFace:faces){

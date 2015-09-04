@@ -1,102 +1,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-<<<<<<< HEAD
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:id="@+id/menuTab"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        xmlns:android="http://schemas.android.com/apk/res/android">
-=======
-    android:background="#D4D4D4">
+    android:background="#D4D4D4"
+    android:orientation="vertical">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/menuTab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="77dp"
 
+        android:gravity="fill_horizontal|fill_vertical"
         android:orientation="horizontal">
 
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
+
         <ImageButton
-            android:background="@drawable/layer_list"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
             android:id="@+id/menu"
-<<<<<<< HEAD
-            android:src="@drawable/menu" />
-=======
-            android:src="@drawable/menu"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/layer_list"
+            android:paddingBottom="15dp"
             android:paddingLeft="8dp"
-            android:paddingBottom="15dp"
             android:paddingTop="15dp"
-            android:layout_marginRight="5dp"/>
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
+            android:src="@drawable/menu" />
 
         <ImageButton
-            android:background="@drawable/layer_list"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
             android:id="@+id/gallery"
-<<<<<<< HEAD
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/layer_list"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
             android:src="@drawable/gallery" />
-=======
-            android:src="@drawable/gallery"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
-            android:layout_marginRight="5dp"/>
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
         <ImageButton
-            android:background="@drawable/layer_list"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
             android:id="@+id/contacts"
-<<<<<<< HEAD
-            android:src="@drawable/contacts" />
-=======
-            android:src="@drawable/contacts"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
-            android:layout_marginRight="5dp"/>
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
-
-        <ImageButton
-            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:id="@+id/camera"
-<<<<<<< HEAD
-            android:src="@drawable/camera"/>
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:layout_below="@+id/gallery"
-        android:layout_gravity="center_vertical"/>
-    <!--<LinearLayout-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent">-->
-        <!-- -->
-    <!--</LinearLayout>-->
-=======
-            android:src="@drawable/camera"
-            android:paddingRight="8dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/layer_list"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
-            android:layout_marginRight="5dp"/>
+            android:src="@drawable/contacts" />
 
+        <ImageButton
+            android:id="@+id/camera"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/layer_list"
+            android:paddingBottom="15dp"
+            android:paddingRight="8dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/camera" />
 
     </LinearLayout>
 
@@ -107,7 +64,46 @@
         <!--android:layout_below="@+id/gallery"-->
         <!--android:layout_gravity="center_vertical"-->
         <!--android:scaleType="center" />-->
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
+
+    <RadioGroup
+        android:id="@+id/radio_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/btnDisplay"
+        android:checkedButton="@+id/both_radio"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/btnDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radio_buttons"
+            android:text="Filter" />
+
+        <RadioButton
+            android:id="@+id/smiling_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smiling"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:id="@+id/not_smiling_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Smiling"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:id="@+id/both_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Both"
+            android:textSize="15dp" />
+
+    </RadioGroup>
 
     <GridView
         android:id="@+id/galleryView"

@@ -2,19 +2,6 @@ package facelookapp.facelookapp;
 
 import android.app.Activity;
 import android.content.Intent;
-<<<<<<< HEAD
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import facelookapp.facedetectionlib.FaceDbCreatorThread;
-
-=======
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,40 +13,30 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import java.util.List;
 
 import facelookapp.facedetectionlib.FaceDbCreatorThread;
 import facelookapp.facedetectionlib.FacesStore;
 import facelookapp.images.ImageList;
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
-public class MainActivity extends Activity {
 
-<<<<<<< HEAD
-    ImageButton takeAPicBtn;
-    ImageView displayImg;
-
-    private static final int CAM_REQUEST = 1313;
-=======
 public class MainActivity extends Activity {
     private static final int CAM_REQUEST = 1313;
     ImageAdapter myImageAdapter;
     ImageButton takeAPicBtn;
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
+
+    private RadioGroup rg;
+    private RadioButton rb;
+    private Button btnDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-<<<<<<< HEAD
-        //Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
-        //dbCreator.start();
-
-        takeAPicBtn = (ImageButton) findViewById(R.id.camera);
-        displayImg = (ImageView) findViewById(R.id.image_view);
-
-        takeAPicBtn.setOnClickListener(new takeAPicClicker());
-=======
 
         Thread dbCreator = new Thread(new FaceDbCreatorThread(this));
         dbCreator.start();
@@ -98,18 +75,11 @@ public class MainActivity extends Activity {
             }
         });
 
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-<<<<<<< HEAD
-
-        if (requestCode == CAM_REQUEST) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            displayImg.setImageBitmap(thumbnail);
-=======
         if (data != null) {
             if (requestCode == CAM_REQUEST) {
                 final Uri contentUri = data.getData();
@@ -134,7 +104,6 @@ public class MainActivity extends Activity {
                 }
 
             }
->>>>>>> 09c6a381a036650786411690ae8691808ed27615
         }
     }
 
@@ -158,6 +127,30 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addListenerOnRadio() {
+        rg = (RadioGroup) findViewById(R.id.radio_buttons);
+        btnDisplay = (Button) findViewById(R.id.btnDisplay);
+
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                // get selected radio button from radioGroup
+                int selectedId = rg.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                rb = (RadioButton) findViewById(selectedId);
+
+                Toast.makeText(MainActivity.this,
+                        rb.getText(), Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+
     }
 
     class takeAPicClicker implements Button.OnClickListener {

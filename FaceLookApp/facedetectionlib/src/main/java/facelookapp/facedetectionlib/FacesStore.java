@@ -71,8 +71,10 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
                 SQLiteDatabase data = getReadableDB();
                 String[] file = {pathname};
                 Cursor cur = data.query(TABLE_NAME, null, FILE_NAME, file, null, null, null);
-                if (!cur.moveToFirst())
+                if (!cur.moveToFirst()) {
+                    cur.close();
                     return false;
+                }
 
                 int leftEyeColumn = cur.getColumnIndex(LEFT_EYE_ANGLE),
                         rightEyeColumn = cur.getColumnIndex(RIGHT_EYE_ANGLE),
@@ -84,10 +86,12 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
                     BiometricFace other = new BiometricFace(cur.getDouble(leftEyeColumn),
                             cur.getDouble(rightEyeColumn), cur.getDouble(cheekAngleColumn),
                             cur.getDouble(cheekDistColumn), cur.getInt(isSmilingColumn));
-                    if (BiometricFace.compareFaces(face, other) < .5)
+                    if (BiometricFace.compareFaces(face, other) < .5) {
+                        cur.close();
                         return true;
+                    }
                 } while (cur.moveToNext());
-
+                cur.close();
                 return false;
             }
         };
