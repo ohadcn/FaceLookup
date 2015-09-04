@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import java.util.List;
 
 import facelookapp.facedetectionlib.FaceDbCreatorThread;
+import facelookapp.facedetectionlib.FacesStore;
 import facelookapp.images.ImageList;
 
 
@@ -86,10 +87,15 @@ public class MainActivity extends Activity {
             }
 
             if (requestCode == RESULT_OK) {
-                //TODO: search the images
+                GridView gridview = (GridView) findViewById(R.id.galleryView);
+                myImageAdapter = new ImageAdapter(this);
+                gridview.setAdapter(myImageAdapter);
+                final List<String> results = ImageList.imagesOnDevice(this,FacesStore.getFilter(data.getDataString()));
+                for (String path : results) {
+                    myImageAdapter.add(path);
+                }
+
             }
-        } else {
-            //TODO ?
         }
     }
 

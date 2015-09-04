@@ -66,13 +66,17 @@ public class DisplayImage extends Activity {
                             //put the arguments using putExtra
                             main_activity.putExtra("face", bFace.toString());
                             setResult(Activity.RESULT_OK, main_activity);
-                            finish();
+
                         }
                     });
                 }
+            } else {
+                Intent main_activity = new Intent(DisplayImage.this, MainActivity.class);
+                //put the arguments using putExtra
+                setResult(Activity.RESULT_OK, main_activity);
             }
 
-
+//            finish();
 
 //            BiometricFace choosenFace
 
