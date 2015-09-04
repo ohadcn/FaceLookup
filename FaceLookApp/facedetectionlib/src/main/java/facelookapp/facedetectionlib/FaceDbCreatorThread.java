@@ -17,13 +17,13 @@ public class FaceDbCreatorThread implements Runnable {
 
     public FaceDbCreatorThread(Context context) {
         this.context = context;
+        BiometricFace.initDetector(context);
+        FacesStore.initDB(context);
     }
 
     @Override
     public void run() {
         Looper.prepare();
-        BiometricFace.initDetector(context);
-        FacesStore.initDB(context);
         SQLiteDatabase db = FacesStore.getWritableDB();
 
         List<String> ls = ImageList.imagesOnDevice(context);
