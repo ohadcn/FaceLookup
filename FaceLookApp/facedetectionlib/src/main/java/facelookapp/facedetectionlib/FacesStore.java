@@ -2,12 +2,10 @@ package facelookapp.facedetectionlib;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-
-import java.io.File;
-import java.io.FileFilter;
 
 /**
  * Created by ohad on 9/4/15.
@@ -21,11 +19,8 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
     public static final String CHEEK_ANGLE = "cheek_angle";
     public static final String CHEEK_DIST = "cheek_dist";
     public static final String IS_SMILING = "is_smiling";
-
     public static final int DATABASE_VERSION = 1;
-
     private static final String TEXT = " TEXT", REAL = " REAL", INTEGER = " INTEGER", COMMA = ",";
-
     private static final String DATABASE_NAME = "Faces.db";
     private static final String CREATE_TABLE = "CREATE TABLE " +
             TABLE_NAME + " (" + _ID + " INTEGER UNIQUE PRIMARY KEY" + COMMA +
@@ -38,6 +33,7 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
             " )";
     private static final String REMOVE_TABLE =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
+    private static SQLiteDatabase read;
     private static FacesStore DB;
 
     private FacesStore(Context context) {
@@ -46,6 +42,7 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
 
     public static void initDB(Context context) {
         DB = new FacesStore(context);
+        read = DB.getReadableDatabase();
     }
 
     public static FacesStore getDB() {
@@ -60,11 +57,37 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
         return DB.getWritableDatabase();
     }
 
-    public static FileFilter getFilter(String face) {
-        return new FileFilter() {
+    public static SQLiteDatabase getReadableDB() {
+        return read;
+    }
+
+    public static Filter getFilter(final String s) {
+        final BiometricFace face = BiometricFace.fromString(s);
+        return new Filter() {
+
+
             @Override
-            public boolean accept(File pathname) {
-                //TODO
+            public boolean accept(String pathname) {
+                SQLiteDatabase data = getReadableDB();
+                String[] file = {pathname};
+                Cursor cur = data.query(TABLE_NAME, null, FILE_NAME, file, null, null, null);
+                if (!cur.moveToFirst())
+                    return false;
+
+                int leftEyeColumn = cur.getColumnIndex(LEFT_EYE_ANGLE),
+                        rightEyeColumn = cur.getColumnIndex(RIGHT_EYE_ANGLE),
+                        cheekAngleColumn = cur.getColumnIndex(CHEEK_ANGLE),
+                        cheekDistColumn = cur.getColumnIndex(CHEEK_DIST),
+                        isSmilingColumn = cur.getColumnIndex(IS_SMILING);
+
+                do {
+                    BiometricFace other = new BiometricFace(cur.getDouble(leftEyeColumn),
+                            cur.getDouble(rightEyeColumn), cur.getDouble(cheekAngleColumn),
+                            cur.getDouble(cheekDistColumn), cur.getInt(isSmilingColumn));
+                    if (BiometricFace.compareFaces(face, other) < .5)
+                        return true;
+                } while (cur.moveToNext());
+
                 return false;
             }
         };
@@ -78,6 +101,10 @@ public class FacesStore extends SQLiteOpenHelper implements BaseColumns {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //no old version yet
+    }
+
+    public static interface Filter {
+        public boolean accept(String pathname);
     }
 
 }
