@@ -1,5 +1,8 @@
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -11,28 +14,66 @@
         android:layout_height="wrap_content"
 
         xmlns:android="http://schemas.android.com/apk/res/android">
+=======
+    android:background="#D4D4D4">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/menuTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+>>>>>>> 09c6a381a036650786411690ae8691808ed27615
         <ImageButton
+            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/menu"
+<<<<<<< HEAD
             android:src="@drawable/menu" />
+=======
+            android:src="@drawable/menu"
+            android:paddingLeft="8dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
+>>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
         <ImageButton
+            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/gallery"
+<<<<<<< HEAD
             android:src="@drawable/gallery" />
+=======
+            android:src="@drawable/gallery"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
+>>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
         <ImageButton
+            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/contacts"
+<<<<<<< HEAD
             android:src="@drawable/contacts" />
+=======
+            android:src="@drawable/contacts"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
+>>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
         <ImageButton
+            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:id="@+id/camera"
+<<<<<<< HEAD
             android:src="@drawable/camera"/>
 
     </LinearLayout>
@@ -49,17 +90,35 @@
         <!--android:layout_height="fill_parent">-->
         <!-- -->
     <!--</LinearLayout>-->
+=======
+            android:src="@drawable/camera"
+            android:paddingRight="8dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
+
+
+    </LinearLayout>
+
+    <!--<ImageView-->
+        <!--android:id="@+id/image_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/gallery"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:scaleType="center" />-->
+>>>>>>> 09c6a381a036650786411690ae8691808ed27615
 
     <GridView
+        android:id="@+id/galleryView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/galleryView"
         android:columnWidth="90dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
+        android:gravity="center"
         android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:gravity="center">
+        android:verticalSpacing="10dp">
 
     </GridView>
 
