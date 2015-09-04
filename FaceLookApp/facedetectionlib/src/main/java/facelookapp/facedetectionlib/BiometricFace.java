@@ -51,11 +51,17 @@ public class BiometricFace {
         float zAng = getEulerZ();
         rightEyeAngel = Math.atan2(rightEye.y - nose.y, rightEye.x - nose.x) + zAng;
         leftEyeAngle = Math.atan2(leftEye.y - nose.y, leftEye.x - nose.x) + zAng;
-        if(Math.abs(angle) < 12) {
-            PointF rightCheek = landmarks.get(Landmark.RIGHT_CHEEK);
-            PointF leftCheek = landmarks.get(Landmark.LEFT_CHEEK);
-
-        }
+//        if(Math.abs(angle) < 12) {
+//            PointF rightEye = landmarks.get(Landmark.RIGHT_EYE);
+//            PointF leftEye = landmarks.get(Landmark.LEFT_EYE);
+//            PointF rightCheek = landmarks.get(Landmark.RIGHT_CHEEK);
+//            PointF leftCheek = landmarks.get(Landmark.LEFT_CHEEK);
+//            PointF nose = landmarks.get(Landmark.NOSE_BASE);
+//            double rightEyeAngle = Math.atan2(rightEye.y-nose.y,rightEye.x-nose.x),
+//                    leftEyeAngle = Math.atan2(leftEye.y - nose.y, leftEye.x - nose.x),
+//                    ;
+//            eyesAngle = Math.atan2()
+//        }
 //                landmarks.containsKey(Landmark.LEFT_CHEEK) && landmarks.containsKey(Landmark.RIGHT_CHEEK)
 //                && landmarks.containsKey(Landmark.LEFT_EYE) && landmarks.containsKey(Landmark.RIGHT_EYE)
 //                && landmarks.containsKey(Landmark.NOSE_BASE)) {
@@ -198,3 +204,4 @@ public class BiometricFace {
     }
 
 }
+
