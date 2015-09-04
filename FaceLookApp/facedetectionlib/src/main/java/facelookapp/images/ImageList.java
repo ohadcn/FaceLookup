@@ -25,7 +25,6 @@ public class ImageList {
     }
 
     public static List<String> imagesOnDevice(Context context, FacesStore.Filter filter) {
-        //TODO filter
         List<String> results = new ArrayList<>();
 
 //        String[] projections = {MediaStore.Images.Media._ID,
