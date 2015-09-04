@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#D4D4D4">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/menuTab"
@@ -11,40 +12,57 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:background="@drawable/layer_list"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:id="@+id/menu"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu" />
+            android:src="@drawable/menu"
+            android:paddingLeft="8dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
 
         <ImageButton
+            android:background="@drawable/layer_list"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:id="@+id/gallery"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gallery" />
+            android:src="@drawable/gallery"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
 
         <ImageButton
+            android:background="@drawable/layer_list"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:id="@+id/contacts"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/contacts" />
+            android:src="@drawable/contacts"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
 
         <ImageButton
-            android:id="@+id/camera"
+            android:background="@drawable/layer_list"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/camera" />
-        <!--android:src="@drawable/camera"-->
+            android:id="@+id/camera"
+            android:src="@drawable/camera"
+            android:paddingRight="8dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginRight="5dp"/>
 
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gallery"
-        android:layout_gravity="center_vertical"
-        android:scaleType="center" />
+    <!--<ImageView-->
+        <!--android:id="@+id/image_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/gallery"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:scaleType="center" />-->
 
     <GridView
         android:id="@+id/galleryView"

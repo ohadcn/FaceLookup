@@ -2,8 +2,10 @@ package facelookapp.facelookapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
 import java.util.List;
 
 import facelookapp.facedetectionlib.FaceDbCreatorThread;
@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
     private static final int CAM_REQUEST = 1313;
     ImageAdapter myImageAdapter;
     ImageButton takeAPicBtn;
-    ImageView displayImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class MainActivity extends Activity {
             }
         });
         takeAPicBtn = (ImageButton) findViewById(R.id.camera);
-        displayImg = (ImageView) findViewById(R.id.image_view);
+//        displayImg = (ImageView) findViewById(R.id.image_view);
 
         takeAPicBtn.setOnClickListener(new takeAPicClicker());
     }
@@ -53,7 +52,7 @@ public class MainActivity extends Activity {
         myImageAdapter = new ImageAdapter(this);
         gridview.setAdapter(myImageAdapter);
         final List<String> paths = ImageList.imagesOnDevice(this);
-        for (String path : paths){
+        for (String path : paths) {
             myImageAdapter.add(path);
         }
 
@@ -63,7 +62,7 @@ public class MainActivity extends Activity {
                 String imagePath = paths.get(position);
                 Intent displayImageIntent = new Intent(MainActivity.this, DisplayImage.class);
                 displayImageIntent.putExtra("imagePath", imagePath);
-                startActivityForResult(displayImageIntent,RESULT_OK);
+                startActivityForResult(displayImageIntent, RESULT_OK);
             }
         });
 
@@ -72,14 +71,25 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            if (requestCode == CAM_REQUEST) {
+                final Uri contentUri = data.getData();
+                final String[] proj = {MediaStore.Images.Media.DATA};
+                final Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+                final int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToLast();
+                final String imagePath = cursor.getString(column_index);
 
-        if (requestCode == CAM_REQUEST) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            displayImg.setImageBitmap(thumbnail);
-        }
+                Intent displayImageIntent = new Intent(MainActivity.this, DisplayImage.class);
+                displayImageIntent.putExtra("imagePath", imagePath);
+                startActivityForResult(displayImageIntent, RESULT_OK);
+            }
 
-        if (requestCode == RESULT_OK) {
-
+            if (requestCode == RESULT_OK) {
+                //TODO: search the images
+            }
+        } else {
+            //TODO ?
         }
     }
 
